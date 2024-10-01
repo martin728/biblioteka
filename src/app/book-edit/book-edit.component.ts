@@ -51,7 +51,6 @@ export class BookEditComponent implements OnInit {
     if (this.bookForm.valid) {
       const updatedBook = {...this.bookForm.value,id:this.book?.id};
       this.dialogRef.close(updatedBook);
-      console.log('Updated Book:', updatedBook);
     }
   }
 }

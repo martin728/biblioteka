@@ -1,8 +1,8 @@
 <mat-toolbar class="toolbar" color="primary">
   <span>📖 Biblioteka</span>
-  <span class="spacer"></span>
   <mat-form-field class="search-bar">
-    <input matInput placeholder="Search" >
+    <input matInput placeholder="Search" (input)="onSearch($event)">
   </mat-form-field>
-  <span>Found 0 results</span>
+  <span>{{ (filteredBooks$ | async)?.length }} results found</span>
+
 </mat-toolbar>

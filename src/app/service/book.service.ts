@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import {DEFAULT_BOOK_LIST} from "../models/constants";
+import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
+import { DEFAULT_BOOK_LIST } from "../models/constants";
 import { Book } from '../models/models';
 
 @Injectable({
@@ -8,14 +8,33 @@ import { Book } from '../models/models';
 })
 export class BookService {
   private booksSubject: BehaviorSubject<Book[]>;
+  private searchTerms: BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor() {
-    const storedBooks = this.loadBooksFromLocalStorage();
-    this.booksSubject = new BehaviorSubject<Book[]>(storedBooks);
+    const storedBooks = localStorage.getItem('books');
+    const initialBooks: Book[] = storedBooks ? JSON.parse(storedBooks) : this.loadInitialBooks();
+    this.booksSubject = new BehaviorSubject<Book[]>(initialBooks);
   }
 
   getBooks(): Observable<Book[]> {
-    return this.booksSubject.asObservable();
+    return combineLatest([
+      this.booksSubject.asObservable(),
+      this.searchTerms.asObservable(),
+    ]).pipe(
+      map(([books, searchTerm]) =>
+        books.filter(book =>
+          book.bookTitle.toLowerCase().includes(searchTerm)
+        )
+      )
+    );
+  }
+
+  setSearchTerm(term: string): void {
+    this.searchTerms.next(term.toLowerCase());
+  }
+
+  getFilteredBooks(): Observable<Book[]> {
+    return this.getBooks();
   }
 
   addBook(book: Book) {
@@ -40,11 +59,6 @@ export class BookService {
     const updatedBooks = currentBooks.filter(book => book.id !== id);
     this.booksSubject.next(updatedBooks);
     this.saveBooksToLocalStorage(updatedBooks);
-  }
-
-  private loadBooksFromLocalStorage(): Book[] {
-    const booksJSON = localStorage.getItem('books');
-    return booksJSON ? JSON.parse(booksJSON) : this.loadInitialBooks();
   }
 
   private saveBooksToLocalStorage(books: Book[]): void {

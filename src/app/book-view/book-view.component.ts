@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { MatDivider } from "@angular/material/divider";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import {BookEditComponent} from "../book-edit/book-edit.component";
+import { BookEditComponent } from "../book-edit/book-edit.component";
 import { Book } from "../models/models";
 import { BookService } from "../service/book.service";
 
@@ -25,7 +25,7 @@ import { BookService } from "../service/book.service";
     MatDivider,
   ],
   templateUrl: './book-view.component.html',
-  styleUrls: ['./book-view.component.scss'],
+  styleUrls: ['./book-view.component.css'],
 })
 export class BookViewComponent {
   @Input() bookInfo?: Book | null;

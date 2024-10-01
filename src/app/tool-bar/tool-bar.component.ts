@@ -1,9 +1,11 @@
 import { AsyncPipe } from "@angular/common";
 import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { Observable } from "rxjs";
+import { Book } from "../models/models";
 import { BookService } from '../service/book.service';
 
 @Component({
@@ -17,8 +19,17 @@ import { BookService } from '../service/book.service';
     MatToolbarModule,
     AsyncPipe
   ],
-  styleUrls: ['./tool-bar.component.scss']
+  styleUrls: ['./tool-bar.component.css']
 })
 export class ToolBarComponent {
-  constructor(private bookService: BookService) {}
+  filteredBooks$: Observable<Book[]>;
+
+  constructor(private bookService: BookService) {
+    this.filteredBooks$ = this.bookService.getFilteredBooks();
+  }
+
+  onSearch(event: any): void {
+    const target = event.target as HTMLInputElement;
+    this.bookService.setSearchTerm(target.value);
+  }
 }

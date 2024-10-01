@@ -49,8 +49,7 @@ export class AppComponent {
     this.showBookConstructor = !this.showBookConstructor;
   }
 
-
-  onSelectBook(book: Book) {
+  onSelectBook() {
     this.showBookView = true;
     this.showBookConstructor = false;
   }
