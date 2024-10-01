@@ -1,0 +1,12 @@
+.book{
+  display: flex;
+}
+
+.book-info{
+  display: flex;
+}
+
+mat-list-item h3, p{
+  margin: 0;
+  padding-left: 10px;
+}

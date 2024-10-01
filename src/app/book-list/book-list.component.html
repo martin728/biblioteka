@@ -1,0 +1,12 @@
+<div class="container">
+  <mat-card>
+    <mat-nav-list *ngFor="let book of bookList; let i = index">
+      <app-book
+        [book]="book"
+        [id]="i"
+        (openPopup)="onClick($event)"
+        (delete)="onDelete($event)"
+      ></app-book>
+    </mat-nav-list>
+  </mat-card>
+</div>

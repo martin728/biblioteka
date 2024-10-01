@@ -1,0 +1,10 @@
+<app-tool-bar></app-tool-bar>
+<div class="box">
+  <div>
+  <app-book-list [newBook]="newBook" (selectedBook)="onSelectBook($event)"></app-book-list>
+    <button mat-button color="primary" (click)="toggleConstructor()">
+      Add a book
+    </button>
+  </div>
+  <app-book-constructor *ngIf="showBookConstructor"></app-book-constructor>
+</div>

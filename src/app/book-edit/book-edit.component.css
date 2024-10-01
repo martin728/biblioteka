@@ -1,0 +1,13 @@
+mat-card {
+  width: 25rem;
+  max-width: 42rem;
+  border-radius: 0.9rem;
+  overflow: scroll;
+  position: relative;
+  height: 270px
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,24 @@
+mat-card {
+  width: 25rem;
+  max-width: 42rem;
+  border-radius: 0.9rem;
+  overflow: scroll;
+  position: relative;
+  height: 270px;
+}
+
+mat-nav-list{
+  width: 25rem;
+  max-width: 42rem;
+  border-radius: 0.9rem;
+  position: relative;
+}
+
+mat-list-item h3, p{
+  margin: 0;
+  padding-left: 10px;
+}
+
+mat-list-item{
+  margin: 10px 0;
+}
