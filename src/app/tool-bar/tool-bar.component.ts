@@ -28,7 +28,7 @@ export class ToolBarComponent {
     this.filteredBooks$ = this.bookService.getFilteredBooks();
   }
 
-  onSearch(event: any): void {
+  onSearch(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.bookService.setSearchTerm(target.value);
   }

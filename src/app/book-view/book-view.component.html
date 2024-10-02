@@ -1,18 +1,18 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>About a book</mat-card-title>
-      <img mat-card-avatar [src]="bookInfo?.imgLink" alt="{{bookInfo?.bookTitle}}">
+      <img mat-card-avatar [src]="bookInfo.imgLink" alt="{{bookInfo?.bookTitle}}">
       <mat-card-subtitle>
-        <p>Title: {{bookInfo?.bookTitle}}<br /></p>
-        <p>Released: {{bookInfo?.year}}<br /></p>
-        <p>Author: {{bookInfo?.author}}<br /></p>
-        <p>Description: {{bookInfo?.description}}<br /></p>
+        <p>Title: {{bookInfo.bookTitle}}<br /></p>
+        <p>Released: {{bookInfo.year}}<br /></p>
+        <p>Author: {{bookInfo.author}}<br /></p>
+        <p>Description: {{bookInfo.description}}<br /></p>
       </mat-card-subtitle>
     </mat-card-header>
     <div class="edit-btn">
       <mat-card-footer>
         <button mat-raised-button (click)="onEdit()">Edit</button>
-        <button mat-raised-button (click)="onDelete(bookInfo?.id)">Delete</button>
+        <button mat-raised-button (click)="onDelete(bookInfo.id!)">Delete</button>
       </mat-card-footer>
     </div>
   </mat-card>

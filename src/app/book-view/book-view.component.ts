@@ -22,13 +22,12 @@ import { BookService } from "../service/book.service";
     MatInputModule,
     FormsModule,
     MatButtonModule,
-    MatDivider,
   ],
   templateUrl: './book-view.component.html',
   styleUrls: ['./book-view.component.css'],
 })
 export class BookViewComponent {
-  @Input() bookInfo?: Book | null;
+  @Input() bookInfo: Book;
   @Output() bookInfoChange = new EventEmitter<Book>();
 
   constructor(
@@ -54,9 +53,8 @@ export class BookViewComponent {
     });
   }
 
-  onDelete(id:any) {
+  onDelete(id:number) {
     this.bookService.deleteBook(id);
     this.dialogRef.close();
-
   }
 }

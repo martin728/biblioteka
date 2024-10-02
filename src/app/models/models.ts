@@ -6,3 +6,5 @@ export interface Book {
   description: string;
   author: string;
 }
+
+export type ViewMode = 'constructor' | 'view' | null

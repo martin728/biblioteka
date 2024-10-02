@@ -25,11 +25,11 @@ import { Book } from "../models/models";
   styleUrl: './book-edit.component.css'
 })
 export class BookEditComponent implements OnInit {
-  @Input() book?: Book = this.data.bookInfo;
+  @Input() book: Book = this.data.bookInfo;
   bookForm!: FormGroup;
   constructor(private fb: FormBuilder,@Inject(MAT_DIALOG_DATA) public data: { bookInfo: Book },public dialogRef: MatDialogRef<BookViewComponent>) {
     this.bookForm = this.fb.group({
-      bookTitle: [this.book?.bookTitle, Validators.required], // Updated to match template
+      bookTitle: [this.book?.bookTitle, Validators.required],
       year: [this.book?.year, [Validators.required, Validators.min(1000), Validators.max(new Date().getFullYear())]],
       imgLink: ['', Validators.required],
       description: ['', Validators.required],

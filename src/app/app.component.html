@@ -6,5 +6,5 @@
       <span>Add a book</span>
     </button>
   </div>
-  <app-book-constructor *ngIf="showBookConstructor"></app-book-constructor>
+  <app-book-constructor *ngIf="viewMode" (closeWindow)="viewMode = $event"></app-book-constructor>
 </div>

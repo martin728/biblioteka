@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
@@ -25,6 +25,7 @@ import { BookService } from "../service/book.service"; // Import the service
 })
 export class BookConstructorComponent {
   bookForm: FormGroup;
+  @Output() closeWindow = new EventEmitter<null>();
   constructor(private fb: FormBuilder, private bookService: BookService) {
     this.bookForm = this.fb.group({
       bookTitle: ['', Validators.required],
@@ -40,6 +41,7 @@ export class BookConstructorComponent {
       const newBook: Book = this.bookForm.value;
       this.bookService.addBook(newBook);
       this.bookForm.reset();
+      this.closeWindow.emit(null)
     }
   }
 }

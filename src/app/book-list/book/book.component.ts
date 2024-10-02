@@ -19,14 +19,7 @@ export class BookComponent {
   @Output() delete = new EventEmitter<number>();
   @Output() openPopup = new EventEmitter<number>();
   @Input() id!: number;
-  @Input() book: Book = {
-   imgLink:'',
-   bookTitle: '',
-   year: null,
-   id:null,
-   description:'',
-   author:''
- }
+  @Input() book: Book | null = null
 
   onItemClick(){
     this.openPopup.emit(this.id);

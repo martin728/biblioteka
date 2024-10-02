@@ -19,19 +19,12 @@ export class BookListComponent implements OnChanges{
   constructor(private bookService: BookService,private _dialog: MatDialog) {}
 
   @Output() selectedBook = new EventEmitter<Book>();
-  @Input() newBook:Book = {
-    imgLink:'',
-    bookTitle:'',
-    year:null,
-    id:null,
-    description:'',
-    author:''
-  };
+  @Input() newBook:Book | null = null;
 
   bookList: Book[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(this.newBook.bookTitle) {
+    if(this.newBook?.bookTitle) {
       this.bookList.push(this.newBook)
     }
   }
